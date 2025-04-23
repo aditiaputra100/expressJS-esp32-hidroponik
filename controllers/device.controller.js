@@ -6,7 +6,7 @@ export const addDevice = async (req, res) => {
   try {
     const device = await Device.create({id});
     mqttClient.subscribe(`${id}`);
-    res.status(201).json(device);
+    return res.status(201).json(device);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -17,11 +17,11 @@ export const getDevice = async (req, res) => {
   try {
     const device = await Device.findByPk(deviceId);
     if (!device) {
-      res.status(404).json({message: "ID tidak ditemukan"})
+      return res.status(404).json({message: "ID tidak ditemukan"})
     }
   
     // mqttClient.subscribe(`${deviceId}`);
-    res.json(device);
+    return res.json(device);
 
   } catch (error) {
     console.log(error)

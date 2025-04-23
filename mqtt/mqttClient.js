@@ -23,7 +23,7 @@ mqttClient.on('connect', async () => {
             })
         })
     } catch (error) {
-        console.error('Error fetching devices from DB:', err);
+        console.error('Error fetching devices from DB:', error);
     }
 });
 
