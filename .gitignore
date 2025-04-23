@@ -13,6 +13,3 @@ yarn-error.log*
 
 # Pem
 *.pem
-
-# Key
-path/to
