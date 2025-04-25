@@ -9,11 +9,11 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('sensor', {
+    await queryInterface.createTable('notifications', {
       id: {
-        allowNull: false,
         primaryKey: true,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW
       },
       deviceId: {
         type: Sequelize.STRING,
@@ -25,19 +25,14 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      ph: {
-        type: Sequelize.FLOAT
+      title: {
+        type: Sequelize.STRING,
       },
-      ppm: {
-        type: Sequelize.INTEGER
+      body: {
+        type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE
+      type: {
+        type: Sequelize.STRING
       }
     })
   },
@@ -49,6 +44,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('sensor')
+    await queryInterface.dropTable('notifications')
   }
 };

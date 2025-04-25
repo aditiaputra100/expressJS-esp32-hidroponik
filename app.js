@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import deviceRoutes from './routes/device.route.js'
 import sensorRoutes from './routes/sensor.route.js'
+import notificationRoutes from './routes/notification.route.js'
 import Device from './models/device.js';
 import Sensor from './models/sensor.js';
 
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/api/device', deviceRoutes);
 app.use('/api/sensor', sensorRoutes);
+app.use('/api/notification', notificationRoutes)
 
 // Menyinkronkan model ke database
 async function syncModels() {
