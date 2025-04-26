@@ -4,7 +4,7 @@ import Device from "./device.js";
 
 const Notification = sequelize.define('Notification', {
     id: {
-        type: DataTypes.UUIDV4, allowNull: false, primaryKey: true
+        type: DataTypes.UUID, defaultValue:  DataTypes.UUIDV4, allowNull: false, primaryKey: true
     },
     deviceId: {
         type: DataTypes.STRING,

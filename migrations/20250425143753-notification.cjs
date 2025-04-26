@@ -12,7 +12,8 @@ module.exports = {
     await queryInterface.createTable('notifications', {
       id: {
         primaryKey: true,
-        type: Sequelize.UUIDV4,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false
       },
       deviceId: {
