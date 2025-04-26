@@ -4,6 +4,7 @@ import { getDatabase } from 'firebase-admin/database';
 import pkg from 'firebase-admin';
 import fs from 'fs';
 import serviceAccountKey from '../path/to/serviceAccountKey.js'
+import Device from '../models/device.js';
 
 const {credential} = pkg
 
@@ -35,5 +36,15 @@ export const sendNotification = async (token, title, body, data = {}) => {
         console.log('Successfully sent message:', response)
     } catch (error) {
         console.error('Error sending message:', error)
+
+        if (error.code === 'messaging/registration-token-not-registered') {
+            console.warn('Token tidak valid. Hapus token dari database.');
+
+            await Device.update({fcmToken: null}, {
+                where: {
+                    fcmToken: token
+                }
+            })
+        }
     }
 }
