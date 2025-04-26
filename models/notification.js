@@ -4,7 +4,7 @@ import Device from "./device.js";
 
 const Notification = sequelize.define('Notification', {
     id: {
-        type: DataTypes.DATE, defaultValue: Sequelize.NOW, primaryKey: true
+        type: DataTypes.UUIDV4, allowNull: false, primaryKey: true
     },
     deviceId: {
         type: DataTypes.STRING,
@@ -23,7 +23,7 @@ const Notification = sequelize.define('Notification', {
     type: {
         type: DataTypes.STRING
     }
-}, {timestamps: false, tableName: 'notifications'})
+}, {timestamps: true, tableName: 'notifications'})
 
 Notification.belongsTo(Device, {foreignKey: 'deviceId'})
 Device.hasMany(Notification, {foreignKey: 'deviceId'})

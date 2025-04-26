@@ -12,8 +12,8 @@ module.exports = {
     await queryInterface.createTable('notifications', {
       id: {
         primaryKey: true,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+        type: Sequelize.UUIDV4,
+        allowNull: false
       },
       deviceId: {
         type: Sequelize.STRING,
@@ -33,6 +33,14 @@ module.exports = {
       },
       type: {
         type: Sequelize.STRING
+      },
+      createdAt: {
+        allowNull: true,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.DATE
       }
     })
   },
