@@ -73,7 +73,7 @@ export const handleSensorMessage = async (topic, message) => {
             // PPM
             if (ppm < device.minPPM || ppm > device.maxPPM) {
                 if (deviceStatus[device.id].isPPMNormal) {
-                    await sendNotification(device.fcmToken, 'Peringatan PPM', `Nilai PPM: ${ph}`, {
+                    await sendNotification(device.fcmToken, 'Peringatan PPM', `Nilai PPM: ${ppm}`, {
                         'sensorType': 'ppm',
                         'value': `${ppm}`,
                         'type': 'error-ppm'

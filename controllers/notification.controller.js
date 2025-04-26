@@ -32,7 +32,8 @@ export const getListNotification = async (req, res) => {
                 id: value.dataValues.id,
                 title: value.dataValues.title,
                 body: value.dataValues.body,
-                type: value.dataValues.type
+                type: value.dataValues.type,
+                createdAt: value.dataValues.createdAt
             }
         }))
     } catch (error) {
