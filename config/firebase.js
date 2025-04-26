@@ -20,7 +20,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 export const realtimeDB = getDatabase(app);
 
-export const sendNotification = async (token, title, body, data = []) => {
+export const sendNotification = async (token, title, body, data = {}) => {
     const message = {
         token, 
         notification: {
