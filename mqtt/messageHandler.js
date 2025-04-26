@@ -50,17 +50,17 @@ export const handleSensorMessage = async (topic, message) => {
             if (ph < device.minPh || ph > device.maxPh) {
                 if (deviceStatus[device.id].isPhNormal) {
                     await sendNotification(device.fcmToken, 'Peringatan PH', `Nilai PH: ${ph}`, {
-                        sensorType: 'ph',
-                        value: ph
+                        'sensorType': 'ph',
+                        'value': `${ph}`
                     })
                     await Notification.create({deviceId: device.id, title: 'Peringatan PH', body: `Nilai PH: ${ph}` , type: 'error'})
                 }
                 deviceStatus[device.id].isPhNormal = false
             } else {
                 if (!deviceStatus[device.id].isPhNormal) {
-                    await sendNotification(device.fcmToken, 'PH Normal', `Nilai PH kembali normal: ${ph}`, {
-                        sensorType: 'ph',
-                        value: ph
+                    await sendNotification(device.fcmToken, 'PH Normal', `Nilai PH kembali normal: ${ph}`,{
+                        'sensorType': 'ph',
+                        'value': `${ph}`
                     })
                     await Notification.create({deviceId: device.id, title: 'PH Normal', body: `Nilai PH kembali normal: ${ph}` , type: 'normal'})
 
@@ -72,8 +72,8 @@ export const handleSensorMessage = async (topic, message) => {
             if (ppm < device.minPPM || ppm > device.maxPPM) {
                 if (deviceStatus[device.id].isPPMNormal) {
                     await sendNotification(device.fcmToken, 'Peringatan PPM', `Nilai PPM: ${ph}`, {
-                        sensorType: 'ppm',
-                        value: ppm
+                        'sensorType': 'ppm',
+                        'value': `${ppm}`
                     })
                     await Notification.create({deviceId: device.id, title: 'Peringatan PPM', body: `Nilai PPM: ${ppm}` , type: 'error'})
                 }
@@ -81,8 +81,8 @@ export const handleSensorMessage = async (topic, message) => {
             } else {
                 if (!deviceStatus[device.id].isPPMNormal) {
                     await sendNotification(device.fcmToken, 'PPM Normal', `Nilai PPM kembali normal: ${ppm}`, {
-                        sensorType: 'ppm',
-                        value: ppm
+                        'sensorType': 'ppm',
+                        'value': `${ppm}`
                     })
                     await Notification.create({deviceId: device.id, title: 'PPM Normal', body: `Nilai PPM kembali normal: ${ppm}` , type: 'normal'})
 
