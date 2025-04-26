@@ -19,3 +19,21 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 export const realtimeDB = getDatabase(app);
+
+export const sendNotification = async (token, title, body, data = []) => {
+    const message = {
+        token, 
+        notification: {
+            title,
+            body,
+        },
+        data: data
+    }
+
+    try {
+        const response = await pkg.messaging().send(message)
+        console.log('Successfully sent message:', response)
+    } catch (error) {
+        console.error('Error sending message:', error)
+    }
+}
